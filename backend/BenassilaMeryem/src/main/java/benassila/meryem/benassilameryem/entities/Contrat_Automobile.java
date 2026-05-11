@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 
 public class Contrat_Automobile extends Contrat{
 
-    private long numéro_immatriculation;
+    private Long numéro_immatriculation;
     private  String marque;
     private String modele;
 
