@@ -1,10 +1,14 @@
 package benassila.meryem.benassilameryem.service;
 
 import benassila.meryem.benassilameryem.dtos.ClientDto;
+import benassila.meryem.benassilameryem.dtos.ContratDto;
 import benassila.meryem.benassilameryem.entities.Client;
+import benassila.meryem.benassilameryem.entities.Contrat_Automobile;
+import benassila.meryem.benassilameryem.entities.Contrat_Habitation;
 import benassila.meryem.benassilameryem.exceptions.ClientNotFoundException;
 import benassila.meryem.benassilameryem.mappers.Mappers;
 import benassila.meryem.benassilameryem.repositories.ClientRepository;
+import benassila.meryem.benassilameryem.repositories.ContratRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +24,7 @@ import java.util.List;
 public class ClientServiceImpl  implements ClientService{
 
     private ClientRepository clientRepository;
+    private ContratRepository contratRepository;
     private Mappers mapperImp;
 
     @Override
@@ -62,6 +67,29 @@ public class ClientServiceImpl  implements ClientService{
 
         return clientDtos;
     }
+
+
+    //@Override
+   // public List<ContratDto> gettcontratofuser(Long clientid) throws ClientNotFoundException {
+     //   List<ContratDto> contratDtos=new ArrayList<>();
+     //   Client client =clientRepository.findById(clientid).orElse(null);
+     //   if(client==null) throw new ClientNotFoundException("Client not Found");
+
+     //   contratRepository.findByClient_Id(clientid).forEach(contrat -> {
+     //       if (contrat instanceof Contrat_Automobile){
+       //         contratDtos.add(mapperImp.fromContratAutomobile((Contrat_Automobile) contrat));
+        //    } else if (contrat instanceof Contrat_Habitation) {
+         //       contratDtos.add(mapperImp.fromContratHabitation((Contrat_Habitation) contrat));
+          //    else{
+          //          contratDtos.add(mapperImp.fromContrat((Contrat_Habitation) contrat));
+
+            //    }
+           // }
+       // });
+
+
+       // return contratDtos;
+    //}
 
 
 

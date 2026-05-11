@@ -2,6 +2,7 @@ package benassila.meryem.benassilameryem.service;
 
 
 import benassila.meryem.benassilameryem.dtos.ClientDto;
+import benassila.meryem.benassilameryem.dtos.ContratDto;
 import benassila.meryem.benassilameryem.exceptions.ClientNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -19,4 +20,6 @@ public interface  ClientService {
     List<ClientDto> getClients();
     List<ClientDto>  search(String motif);
 
+
+    //List<ContratDto> gettcontratofuser(Long clientid) throws ClientNotFoundException;
 }
