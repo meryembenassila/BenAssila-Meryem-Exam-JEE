@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 
-public class Contrat_SantéDto {
+public class Contrat_SantéDto extends ContratDto {
 
     private Long id;
     private Date date_souscription ;

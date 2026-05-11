@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.Date;
 @Data
 
-public class Contrat_AutomobileDto {
+public class Contrat_AutomobileDto extends ContratDto {
 
     private Long id;
     private Date date_souscription ;

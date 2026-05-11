@@ -6,7 +6,7 @@ import lombok.Data;
 
 import java.util.Date;
 @Data
-public class Contrat_HAbitationDto {
+public class Contrat_HAbitationDto extends ContratDto {
     private Long id;
     private Date date_souscription ;
     private Status_Contrat statusContrat;
