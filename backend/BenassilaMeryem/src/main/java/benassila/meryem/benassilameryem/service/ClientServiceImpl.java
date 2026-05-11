@@ -1,0 +1,68 @@
+package benassila.meryem.benassilameryem.service;
+
+import benassila.meryem.benassilameryem.dtos.ClientDto;
+import benassila.meryem.benassilameryem.entities.Client;
+import benassila.meryem.benassilameryem.exceptions.ClientNotFoundException;
+import benassila.meryem.benassilameryem.mappers.Mappers;
+import benassila.meryem.benassilameryem.repositories.ClientRepository;
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+@Transactional
+@Slf4j
+@AllArgsConstructor
+public class ClientServiceImpl  implements ClientService{
+
+    private ClientRepository clientRepository;
+    private Mappers mapperImp;
+
+    @Override
+    public ClientDto saveClient(ClientDto clientDto) {
+        Client save = clientRepository.save(mapperImp.fromClientDTO(clientDto));
+        return mapperImp.fromClient(save);
+    }
+
+    @Override
+    public ClientDto getClient(Long id) throws ClientNotFoundException {
+        Client client =clientRepository.findById(id).orElse(null);
+        if(client==null) throw new ClientNotFoundException("Client not Found");
+        return mapperImp.fromClient(client);
+    }
+
+    @Override
+    public void deleteClient(Long id) throws ClientNotFoundException {
+        Client client =clientRepository.findById(id).orElse(null);
+        if(client==null) throw new ClientNotFoundException("Client not Found");
+        clientRepository.deleteById(id);
+
+    }
+
+    @Override
+    public List<ClientDto> getClients() {
+        List<ClientDto> clientDtos=new ArrayList<>();
+        clientRepository.findAll().forEach(client -> {
+                    clientDtos.add(mapperImp.fromClient(client));
+                }
+        );
+        return clientDtos;
+    }
+
+    @Override
+    public List<ClientDto> search(String motif) {
+        List<ClientDto> clientDtos=new ArrayList<>();
+        clientRepository.findAllByNameContainsIgnoreCase(motif).forEach(client -> {
+            clientDtos.add(mapperImp.fromClient(client));
+        });
+
+        return clientDtos;
+    }
+
+
+
+}

@@ -6,12 +6,13 @@ import benassila.meryem.benassilameryem.dtos.Contrat_HAbitationDto;
 import benassila.meryem.benassilameryem.entities.Client;
 import benassila.meryem.benassilameryem.entities.Contrat_Automobile;
 import benassila.meryem.benassilameryem.entities.Contrat_Habitation;
-import lombok.Data;
+
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 
 
-@Data
-public class mappers {
+@Service
+public class Mappers {
 
     public Client fromClientDTO(ClientDto clientDto){
         Client Client = new Client();
